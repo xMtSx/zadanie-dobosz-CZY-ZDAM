@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Zgłoszenia awarii" Height="614" Width="700" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto" MinHeight="74"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="50.96"/>
+            <RowDefinition Height="321.08"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="139.333"/>
+            <ColumnDefinition Width="471.72"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nazwa użytkownika:" Grid.Column="1" Margin="151,9,202,0" VerticalAlignment="Top" Height="26" Width="NaN" />
+        <TextBox Name="tbNazwaUzytkownika" Margin="123,35,36,0" VerticalAlignment="Top" Height="26" Width="NaN" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+        <Label Content="Opis awarii:" Grid.Column="1" Margin="168,11,185,0" VerticalAlignment="Top" Height="26" Width="NaN"  Grid.Row="1"/>
+        <TextBox Name="tbOpisAwarii" Grid.Row="1" Margin="124,42,36,0" VerticalAlignment="Top" Height="54" Width="NaN" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+
+
+        <Button Name="btnDodajZgloszenie" Grid.Row="3" Content="Dodaj zgłoszenie" Margin="104,49,0,12"
+            Click="btnDodajZgloszenie_Click" Background="Gray" BorderBrush="White" Height="NaN" Width="214" HorizontalAlignment="Left" Grid.Column="1" Grid.RowSpan="2" />
+
+        <DataGrid Name="dgZgloszenia" Grid.Row="5" Margin="0,3,0,0" AutoGenerateColumns="False"
+            CanUserAddRows="False" Grid.ColumnSpan="3" Height="NaN" Width="NaN">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Nazwa użytkownika" Binding="{Binding NazwaUzytkownika}"/>
+                <DataGridTextColumn Header="Opis awarii" Binding="{Binding Opis}"/>
+                <DataGridTextColumn Header="Data dodania" Binding="{Binding DataDodania}"/>
+                <DataGridTextColumn Header="Przydzielone do" Binding="{Binding PrzydzieloneDo}"/>
+                <DataGridCheckBoxColumn Header="Wykonane" Binding="{Binding Wykonane}"/>
+                <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}"/>
+                <DataGridTemplateColumn Header="Usuń">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Usuń" Click="btnUsunZgloszenie_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Przydzielenie" Grid.Row="2" Margin="124,29,367,0" VerticalAlignment="Top" Height="26" Width="NaN" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <ComboBox Name="cbPrzydzielenie" Grid.Row="3" Margin="124,10,347,0" VerticalAlignment="Top" Height="26" Width="NaN" Grid.ColumnSpan="2"/>
+
+        <Label Content="Kategoria" Grid.Row="2" Grid.Column="1" Margin="263,30,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="71"  Grid.RowSpan="2"/>
+        <ComboBox Name="cbKategoria" Grid.Row="3" Grid.Column="1" Margin="263,10,36,0" VerticalAlignment="Top" Height="26" Width="NaN" SelectionChanged="cbKategoria_SelectionChanged"/>
+
+        <Button Name="btnOtworzWindow2" Grid.Row="4" Content="Dodaj użytkownika" Margin="33,10,388,12"
+         Click="btnOtworzWindow2_Click" Background="Gray" BorderBrush="White" Height="NaN" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnOtworzWindow3" Grid.Row="4" Content="Dodaj Kategorie" Margin="333,10,0,13"
+            Click="btnOtworzWindow3_Click" Grid.Column="1" Background="Gray" BorderBrush="White" Foreground="Black" HorizontalAlignment="Left" Width="184" Height="NaN" Grid.ColumnSpan="2" />
+
+    </Grid>
+</Window>
